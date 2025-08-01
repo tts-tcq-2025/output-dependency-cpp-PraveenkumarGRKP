@@ -54,7 +54,7 @@ namespace WeatherSpace
     
     void TestRainy()
     {
-        SensorStub sensor;
+        SensorStub sensor (72,70,26,52);
         string report = Report(sensor);
         cout << report << endl;
         assert(report.find("rain") != string::npos);
@@ -64,12 +64,13 @@ namespace WeatherSpace
     {
         // This instance of stub needs to be different-
         // to give high precipitation (>60) and low wind-speed (<50)
-        SensorStub sensor;
+        SensorStub sensor (72,70,26,49); // wind speed less than 50
 
         // strengthen the assert to expose the bug
         // (function returns Sunny day, it should predict rain)
         string report = Report(sensor);
-        assert(report.length() > 0);
+        cout << report << endl;
+        assert(report.find("rain") != string::npos); //this will fail 
     }
 }
 
