@@ -17,5 +17,12 @@ void testPrintColorMap() {
     std::cout << "\nPrint color map test\n"; 
     int result = printColorMap();
     assert(result == 25);
+    // ✅ Test format of a few lines
+    assert(colorMap[0] == "0 | White | Blue");     // should pass
+    assert(colorMap[1] == "1 | White | Orange");   // ❌ failed since in cout minorcolour of [i] is given
     std::cout << "All is well (maybe!)\n";
+}
+int main() {
+    testPrintColorMap();
+    return 0;
 }
